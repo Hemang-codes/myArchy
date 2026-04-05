@@ -1,0 +1,21 @@
+
+
+//@theme "/usr/share/rofi/themes/arthur.rasi"
+
+// Main //
+window {
+    height:                      30em;
+    width:                       30em;
+    transparency:                "real";
+    fullscreen:                  false;
+    enabled:                     true;
+    cursor:                      "default";
+    spacing:                     2em;
+    padding:                     1em;
+    border-color:                #d8dee9;
+    border-radius:               5px;
+    background:            transparent;
+}
+
+
+@theme "/usr/share/rofi/themes/rounded-nord-dark.rasi"
