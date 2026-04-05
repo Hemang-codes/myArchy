@@ -1,4 +1,4 @@
-myArchy
+# myArchy
 
 # 🏗️ Arch Linux Custom Setup: Hyprland + Waybar
 
