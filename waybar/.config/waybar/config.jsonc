@@ -7,18 +7,16 @@
   "margin-top": 2,
   "margin-right": 10,
   "modules-left": ["hyprland/workspaces","hyprland/window"],
-  "modules-center": ["custom/camera","clock"],
+  "modules-center": ["battery","custom/camera","clock"],
   "modules-right": [
     "temperature",
     "memory",
     "mpris",
+    "idle_inhibitor",
     "network",
     "bluetooth",
     "pulseaudio",
-    "cpu",
-    "battery",
-    "custom/power",
-    "custom/notification"
+    "custom/power" 
   ],
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -90,12 +88,19 @@
     "bat": "BAT0",
     "adapter": "ADP1",
     "full-at": 99,
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-not-charging": "{capacity}% {icon}",
-    "format-icons": ["", "", "", "", ""]
+    "format": "{icon}",
+    "format-alt": "{capacity}%",
+    "format-full": "{icon}",
+    "format-charging": "{capacity}% ⚡︎",
+    "format-plugged": "{capacity}% ⚡︎",
+    "format-not-charging": "{icon}",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "tooltip-format": "{capacity}%", 
+    "states": {
+        "good": 90,
+        "warning": 30,
+        "critical": 15
+    },
 },
   "bluetooth": {
     "format": "",
@@ -140,6 +145,14 @@
 	]
 },
 
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": " ", // Icon when sleep is BLOCKED (Awake)
+        "deactivated": " " // Icon when sleep is ALLOWED (Normal)
+    }
+},
+
 "mpris": {
     "format": "{player_icon}  {status_icon} {artist} - {title}",
     "max-length": 25, 
@@ -158,35 +171,30 @@
 "custom/camera": {
     "format": "{}",
     "return-type": "json",
-    "exec": "/home/hemang/.config/waybar/scripts/camera.sh",
+
     "interval": 2,
     "on-click": "grim -g \"$(slurp)\" - | wl-copy",
     "tooltip": false
 },
-
-"custom/notification": {
-    "tooltip": false,
-    "format": "{icon}",
-    "format-icons": {
-        "notification": "<span foreground='red'><sup></sup></span>",
-        "none": "",
-        "dnd-notification": "<span foreground='red'><sup></sup></span>",
-        "dnd-none": "",
-        "inhibited-notification": "<span foreground='red'><sup></sup></span>",
-        "inhibited-none": "",
-        "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-        "dnd-inhibited-none": ""
-    },
-    "return-type": "json",
-    "exec-if": "which swaync-client",
-    "exec": "swaync-client -swb",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
+"temperature": {
+    "thermal-zone": 1, 
+    "critical-threshold": 80,
+    "format": "  {temperatureC}°C", // Ensure it is {temperatureC}
+    "format-critical": "  {temperatureC}°C",
+    "interval": 2
 },
-
+"memory": {
+    "interval": 10,
+    "format": "⛃ {percentage}% ", 
+    "format-critical": "⛃ {percentage}% ",
+    "tooltip": true,
+    "alt-format": "Memory: {used:0.1f}GiB / {total:0.1f}GiB",
+    "states": {
+        "critical": 90
+    }
+},
   "tray": {
-    "format":"󰀂",
+    "format":"󰀂 ",
     "icon-size": 12,
     "spacing": 17
   }

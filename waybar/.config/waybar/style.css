@@ -10,7 +10,7 @@
   color: white;
 }
 #waybar{
-  background-color: transparent;
+  background: transparent;
   border-radius: 10px;
 }
 #workspaces{
@@ -25,7 +25,8 @@
 #workspaces button.empty{
   opacity: 0.5;
 }
-#window{
+#window,
+#tray{
   border-top: none;
   border: 1px solid @background;
   border-radius: 0px 0px 15px 15px;
@@ -41,12 +42,15 @@
 #clock{
   margin: 0px 5px;
 }
-#temperature,
 #memory{
   background-color: @base; 
-  border-radius: 10px;
-  padding: 0px 7px;
-  margin: 0px 7px;
+  border-radius: 0px 10px 10px 0px;
+  padding: 5px;
+}
+#temperature{
+  background-color: @base; 
+  border-radius: 10px 0px 0px 10px;
+  padding: 5px;
 }
 #mpris{
   background-color: @background; 
@@ -58,10 +62,10 @@
 #bluetooth,
 #pulseaudio,
 #cpu,
-#battery, 
-#custom-power {
-  padding: 0px 7px;
-  margin: 0px 7px;
+#custom-power,
+#idle_inhibitor {
+  margin: 0px 5px;
+  padding: 0px 5px;
   color: @base;
   font-size: 18px;
   font-weight: 800;
@@ -74,4 +78,30 @@
 }
 #custom-camera.active{
   color: #800000;
+}
+
+/* 2. Style for your current 67% (The "Good" state) */
+/* This is likely what was turning green. We set it back to white/standard. */
+#battery.good {
+    color: #ffffff; 
+}
+
+/* 3. Style for 90% and above */
+/* Waybar automatically uses the .full class when battery is high/full-at */
+#battery.full {
+    color: #a6e3a1; /* Green */
+}
+
+/* 4. Style for when you are plugged in */
+#battery.charging, #battery.plugged {
+    color: #f9e2af; /* Yellow/Peach */
+}
+
+/* 5. Warning and Critical */
+#battery.warning {
+    color: #fab387; /* Orange */
+}
+
+#battery.critical {
+    color: #f38ba8; /* Red */
 }
