@@ -2,7 +2,7 @@
   "reload_style_on_change": true,
   "position": "top",
   "layer": "top",
-  "height": 27,
+  "height": 30,
   "margin-left": 10,
   "margin-top": 2,
   "margin-right": 10,
@@ -44,20 +44,32 @@
       "5": []
     }
   },
-  
-  "hyprland/window": {
-    "format": "◉  {title}",
+
+"hyprland/window": {
+    "format": "{title}",
+    "max-length": 30,
+    "separate-outputs": true,
+    "window-rewrite-default": " ● ",
+    "rewrite": {
+        "(.*)Visual Studio Code": "     $1",
+        "(.*)Chromium": "   $1",
+        "(.*)Spotify": "   $1",
+        "alacritty": "   Terminal",
+        "(.*)nvim": "   $1"
+    }
+},
+
+"hyprland/window": {
+    "format": "●  {title}",
     "max-length": 24,
     "separate-outputs": true,
     "rewrite": {
         "(.*) — Mozilla Firefox": " $1",
-        "(.*) - Visual Studio Code": "󰨞 $1",
+        "(.*) - Visual Studio Code": " $1",
         "(.*) - Chromium": " $1",
-        "kitty": "",
         "(.*) ~": " $1",
-        "nvim (.*)": " $1",
     }
-  },
+},
 
   "cpu": {
     "interval": 5,

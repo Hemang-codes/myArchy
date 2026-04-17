@@ -2,7 +2,7 @@
 @define-color background #3A3B46;
 @define-color base #535F64;
 *{
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   min-height: 0;
   margin: 0px;
