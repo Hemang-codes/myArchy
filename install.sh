@@ -1,35 +1,47 @@
 #!/bin/bash
 
 # Configuration
-DISK="/dev/sda"      # Verify with lsblk!
-ARCH_PART="${DISK}3" # Tiny11 is usually 1 & 2 (EFI & Windows)
+DISK="/dev/sda"      
+# NOTE: Tiny11 created 3 partitions (EFI, MSR, Windows). 
+# So your Arch space is actually partition 4.
+ARCH_PART="${DISK}4" 
 USER_NAME="hemang"
 REPO="https://github.com/Hemang-codes/myArchy.git"
 
-# 1. Format the Arch Partition (Keep EFI as is!)
+# 1. Format and Mount
 mkfs.ext4 $ARCH_PART
-
-# 2. Mount and Install Base
 mount $ARCH_PART /mnt
 mkdir -p /mnt/boot/efi
-mount "${DISK}1" /mnt/boot/efi # Mounting your existing EFI partition
-pacstrap /mnt base linux linux-firmware git nvim sudo
+mount "${DISK}1" /mnt/boot/efi # Reusing your 512MB EFI partition
+
+# 2. Pacstrap (Added essential drivers and boot tools)
+pacstrap /mnt base linux linux-firmware intel-ucode git nvim sudo grub efibootmgr os-prober networkmanager ntfs-3g
 
 # 3. Generate fstab
-genfstab -U /mnt >>/mnt/etc/fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 
-# 4. System Config via Chroot
+# 4. Chroot Configuration
 arch-chroot /mnt /bin/bash <<EOF
 ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 hwclock --systohc
 echo "arch-hemang" > /etc/hostname
 useradd -m -G wheel $USER_NAME
 echo "$USER_NAME:password" | chpasswd
-sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
+echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers
 
-# Pre-clone the repo for post-install
+# Enable NetworkManager so you have Wi-Fi on reboot
+systemctl enable NetworkManager
+
+# GRUB Setup for Triple Boot
+echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ArchLinux
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# Pre-clone the repo
 git clone $REPO /home/$USER_NAME/myArchy
 chown -R $USER_NAME:$USER_NAME /home/$USER_NAME/myArchy
 EOF
 
-echo "Done! Reboot, then run the script inside ~/myArchy."
+echo "Installation complete! Rebooting in 5 seconds..."
+sleep 5
+reboot
