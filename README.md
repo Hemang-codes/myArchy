@@ -11,7 +11,7 @@ Lightweight Performance: Built for speed and low RAM utilization at idle.
 Arch LinuxWM / DE: [e.g., Hyprland / i3wm / Sway] (Fill in your Window Manager)
 Status Bar: [e.g., Waybar / Polybar] (Fill in your bar)
 Terminal: [e.g., Alacritty / Kitty] (Fill in your terminal)
-🚀 Installation1. 
+🚀 Installation.
 1. Prerequisites Ensure you have the required packages installed on your system: sudo pacman -S git base-devel
 2. Clone the Repository Clone this repository directly into your home or configuration directory: git clone https://github.com/Hemang-codes/myArchy.git
 3. Apply ConfigurationsSymlink or copy the configuration files to your system config folder: ln -s ~/.config/dotfiles/your_wm ~/.config/your_wm
