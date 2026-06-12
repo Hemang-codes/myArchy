@@ -1,0 +1,6 @@
+neofetch 7.1.0-2
+nerdfetch 8.5.4-1
+wifitui-bin 0.10.0-1
+wifitui-bin-debug 0.10.0-1
+yay-bin 12.5.7-1
+yay-bin-debug 12.5.7-1

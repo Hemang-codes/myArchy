@@ -1,0 +1,23 @@
+# Ignore terminal and shell command history (Contains sensitive data/passwords)
+.bash_history
+.zsh_history
+*.history
+fish/logs/
+fish/fish_history
+
+# Ignore Neovim temporary backup and undo files
+*.swp
+*.swo
+.netrwhist
+nvim/.repro/
+
+# Ignore system/desktop cache files
+.cache/
+thumbs.db
+.DS_Store
+
+# Ignore private keys or credentials if you accidentally drop them here
+*.pem
+*.key
+*.token
+secret*
