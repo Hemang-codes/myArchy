@@ -1,0 +1,214 @@
+{
+  "reload_style_on_change": true,
+  "position": "top",
+  "layer": "top",
+  "height": 30,
+  "margin-left": 10,
+  "margin-top": 2,
+  "margin-right": 10,
+  "modules-left": ["hyprland/workspaces","hyprland/window"],
+  "modules-center": ["battery","custom/camera","clock"],
+  "modules-right": [
+    "temperature",
+    "memory",
+    "mpris",
+    "idle_inhibitor",
+    "network",
+    "bluetooth",
+    "pulseaudio",
+    "custom/power" 
+  ],
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1 ",
+      "2": "2 ",
+      "3": "3 ",
+      "4": "4 ",
+      "5": "5 ",
+      "6": "6 ",
+      "7": "7 ",
+      "8": "8 ",
+      "9": "9 ",
+      "10": "0",
+      "active": "󱓻"
+    },
+
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+
+"hyprland/window": {
+    "format": "{title}",
+    "max-length": 30,
+    "separate-outputs": true,
+    "window-rewrite-default": " ● ",
+    "rewrite": {
+        "(.*)Visual Studio Code": "     $1",
+        "(.*)Chromium": "   $1",
+        "(.*)Spotify": "   $1",
+        "alacritty": "   Terminal",
+        "(.*)nvim": "   $1"
+    }
+},
+
+"hyprland/window": {
+    "format": "●  {title}",
+    "max-length": 24,
+    "separate-outputs": true,
+    "rewrite": {
+        "(.*) — Mozilla Firefox": " $1",
+        "(.*) - Visual Studio Code": " $1",
+        "(.*) - Chromium": " $1",
+        "(.*) ~": " $1",
+    }
+},
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰍛",
+    "on-click": "alacritty -T btop -e btop"
+  },
+
+  "clock": {
+    "format": "{:L%A %H:%M}",
+    "format-alt": "{:L%d %B %Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "on-click-right": "code"
+  },
+  "network": {
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "alacritty -T wifitui -e wifitui"
+  },
+  "battery": {
+    "bat": "BAT0",
+    "adapter": "ADP1",
+    "full-at": 99,
+    "format": "{icon}",
+    "format-alt": "{capacity}%",
+    "format-full": "{icon}",
+    "format-charging": "{capacity}% ⚡︎",
+    "format-plugged": "{capacity}% ⚡︎",
+    "format-not-charging": "{icon}",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "tooltip-format": "{capacity}%", 
+    "states": {
+        "good": 90,
+        "warning": 30,
+        "critical": 15
+    },
+},
+
+  "bluetooth": {
+        "format": "  ",
+        "format-disabled": " 󰂲 ",
+        "format-connected": " 󰂱 ",
+        "format-no-controller": " 󰂲 ",
+        "tooltip-format": "Devices connected: {num_connections}",
+        "on-click": "alacritty -T bluetui -e bluetui"
+    },
+  "pulseaudio": {
+        "format": "{icon}",
+        "on-click": "alacritty -T wiremix -e wiremix",
+        "on-click-right": "pamixer -t",
+        "scroll-step": 5,
+        "format-muted": " 󰝟 Muted",
+        "format-icons": {
+            "default": [" ", " ", " "]
+        }
+    },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "~/.config/hypr/scripts/powermenu.sh",
+  },
+  
+  "network#speed": {
+	"interval": 1,
+	"format": "{ifname}",
+	"format-wifi": "{icon}   {bandwidthUpBytes}  {bandwidthDownBytes}",
+	"format-ethernet": "󰌘   {bandwidthUpBytes}  {bandwidthDownBytes}",
+	"format-disconnected": "󰌙",
+	"tooltip-format": "{ipaddr}",
+	"format-linked": "󰈁  {ifname} (No IP)",
+	"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+	"tooltip-format-ethernet": "{ifname} 󰌘",
+	"tooltip-format-disconnected": "󰌙 Disconnected",
+	"min-length": 24,
+	"max-length": 24,
+	"format-icons": [
+		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+	]
+},
+
+"idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+        "activated": " ", // Icon when sleep is BLOCKED (Awake)
+        "deactivated": " " // Icon when sleep is ALLOWED (Normal)
+    }
+},
+
+"mpris": {
+    "format": "{player_icon}  {status_icon} {artist} - {title}",
+    "max-length": 25, 
+    "format-paused": "{player_icon}  {status_icon} <i>{artist} - {title}</i>",
+    "player-icons": {
+        "default": "♫",
+        "spotify": "",
+        "firefox": ""
+    },
+    "status-icons": {
+        "playing": "▶ ",
+        "paused": "⏸ "
+    }
+},
+
+"custom/camera": {
+    "format": "{}",
+    "return-type": "json",
+
+    "interval": 2,
+    "on-click": "grim -g \"$(slurp)\" - | wl-copy",
+    "tooltip": false
+},
+"temperature": {
+    "thermal-zone": 1, 
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C", 
+    "format-critical": " {temperatureC}°C",
+    "interval": 2
+},
+"memory": {
+    "interval": 10,
+    "format": " {percentage}% ", 
+    "format-critical": " {percentage}% ",
+    "tooltip": true,
+    "alt-format": "Memory: {used:0.1f}GiB / {total:0.1f}GiB",
+    "states": {
+        "critical": 90
+    }
+},
+  "tray": {
+    "format":"󰀂 ",
+    "icon-size": 12,
+    "spacing": 17
+  }
+}

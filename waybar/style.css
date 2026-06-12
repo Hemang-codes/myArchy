@@ -1,0 +1,112 @@
+@define-color foreground #E1ECEE;
+@define-color background #3A3B46;
+@define-color base #535F64;
+*{
+  font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 0;
+  margin: 0px;
+  padding: 0px;
+  color: white;
+}
+#waybar{
+  background: transparent;
+  border-radius: 10px;
+}
+#workspaces {
+  margin:0px 15px;
+  padding: 0px 5px;
+  background-color: @base;
+  border-radius: 10px;
+}
+#workspaces button{
+  padding: 0px 5px;
+}
+#workspaces button.empty{
+  opacity: 0.5;
+}
+#window {
+    background: #313244;
+    color: #cdd6f4;
+    padding: 0 10px;   
+    margin: 2px 0;   
+    border-radius: 15px; 
+    font-weight: bold;
+}
+window#waybar.empty #window {
+    background: transparent;
+}
+.modules-center{
+  background-color: @base;
+  padding: 0px 8px;
+  margin-right: 5px;
+  border-radius: 10px;
+}
+#clock{
+  margin: 0px 5px;
+}
+#memory{
+  background-color: @base; 
+  border-radius: 0px 10px 10px 0px;
+  padding: 5px;
+}
+#temperature{
+  background-color: @base; 
+  border-radius: 10px 0px 0px 10px;
+  padding: 5px;
+}
+#mpris{
+  background-color: @background; 
+  border-radius: 10px;
+  padding: 0px 7px;
+  margin: 0px 7px;
+}
+#network,
+#bluetooth,
+#pulseaudio,
+#cpu,
+#custom-power,
+#idle_inhibitor {
+  margin: 0px 5px;
+  padding: 0px 5px;
+  color: @base;
+  font-size: 18px;
+  font-weight: 800;
+}
+#custom-power{
+  margin-right: 15px;
+}
+#custom-camera{
+  padding: 0px;
+}
+#custom-camera.active{
+  color: #800000;
+}
+
+/* 2. Style for your current 67% (The "Good" state) */
+/* This is likely what was turning green. We set it back to white/standard. */
+#battery.good {
+    color: #ffffff; 
+}
+
+/* 3. Style for 90% and above */
+/* Waybar automatically uses the .full class when battery is high/full-at */
+#battery.full {
+    color: #a6e3a1; /* Green */
+}
+
+/* 4. Style for when you are plugged in */
+#battery.charging, #battery.plugged {
+    color: #f9e2af; /* Yellow/Peach */
+}
+
+/* 5. Warning and Critical */
+#battery.warning {
+    color: #fab387; /* Orange */
+}
+
+#battery.critical {
+    color: #f38ba8; /* Red */
+}
+
