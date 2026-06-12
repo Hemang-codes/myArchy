@@ -16,13 +16,13 @@ if [ -f "$SCRIPT_DIR/packages.txt" ]; then
 fi
 
 # 2. Create base configuration directories
-mkdir -p ~/.config
-mkdir -p ~/Pictures/Wallpapers
+mkdir -p "$HOME/.config"
+mkdir -p "$HOME/Pictures/Wallpapers"
 
 # 3. Copy/Deploy custom wallpaper
 if [ -d "$SCRIPT_DIR/wallpapers" ]; then
   echo "🖼️ Deploying custom wallpapers to ~/Pictures/Wallpapers/..."
-  cp -r "$SCRIPT_DIR/wallpapers/." ~/Pictures/Wallpapers/
+  cp -r "$SCRIPT_DIR/wallpapers/." "$HOME/Pictures/Wallpapers/"
 else
   echo "⚠️ No wallpapers folder found in repo, skipping wallpaper copy."
 fi
@@ -32,7 +32,7 @@ echo "🔗 Symlinking configuration directories..."
 for folder in alacritty btop fish hypr nemo neofetch nvim waybar; do
   if [ -d "$SCRIPT_DIR/$folder" ]; then
     echo "Linking $folder -> ~/.config/$folder"
-    ln -sfn "$SCRIPT_DIR/$folder" ~/.config/"$folder"
+    ln -sfn "$SCRIPT_DIR/$folder" "$HOME/.config/$folder"
   fi
 done
 
