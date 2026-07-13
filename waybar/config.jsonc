@@ -60,18 +60,6 @@
     }
 },
 
-"hyprland/window": {
-    "format": "●  {title}",
-    "max-length": 24,
-    "separate-outputs": true,
-    "rewrite": {
-        "(.*) — Mozilla Firefox": " $1",
-        "(.*) - Visual Studio Code": " $1",
-        "(.*) - Chromium": " $1",
-        "(.*) ~": " $1",
-    }
-},
-
   "cpu": {
     "interval": 5,
     "format": "󰍛",
@@ -177,8 +165,8 @@
         "firefox": ""
     },
     "status-icons": {
-        "playing": "▶ ",
-        "paused": "⏸ "
+        "playing": "▶",
+        "paused": "⏸"
     }
 },
 
