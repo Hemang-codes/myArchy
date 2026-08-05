@@ -19,3 +19,5 @@ alias c clear
 
 # Set default editor
 set -gx EDITOR nvim
+
+fish_add_path /home/hemang/.spicetify
