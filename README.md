@@ -5,8 +5,8 @@ A minimal, cozy, and highly functional Arch Linux configuration featuring a warm
 ## 📸 Preview
 
 <p align="center">
-  <img src="preview.png" alt="Setup Preview 1" width="48%" />
-  <img src="preview1.png" alt="Setup Preview 2" width="48%" />
+  <img src="preview/preview.png" alt="Setup Preview 1" width="48%" />
+  <img src="preview/preview1.png" alt="Setup Preview 2" width="48%" />
 </p>
 <p align="center"><em>Current setup showcasing the clean top bar, active workspace indicators, and system resource monitors.</em></p>
 
