@@ -21,3 +21,5 @@ alias c clear
 set -gx EDITOR nvim
 
 fish_add_path /home/hemang/.spicetify
+
+fish_add_path /home/hemang/.local/bin
