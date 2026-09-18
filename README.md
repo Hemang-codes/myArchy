@@ -1,4 +1,4 @@
-![Views](https://komarev.com)
+![Views](https://shield.com)
 # 🪟 My Arch Linux Rice
 
 A minimal, cozy, and highly functional Arch Linux configuration featuring a warm anime/Ghibli-inspired aesthetic, custom top status bar, and optimized workspace management.
