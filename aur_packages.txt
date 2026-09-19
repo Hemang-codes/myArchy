@@ -1,0 +1,9 @@
+# AUR packages, one per line (installed one at a time with yay; a failure only prints a warning).
+# yay itself is bootstrapped by install.sh, so it is not listed here.
+# Regenerate from a working machine with:  pacman -Qqem   (then delete *-debug entries and yay-bin)
+neofetch
+nerdfetch
+wifitui-bin
+# Added for things your Hypr config uses; double-check these two names with `yay -Ss` before relying on them:
+bibata-cursor-theme
+activitywatch-bin

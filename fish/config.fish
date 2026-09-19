@@ -23,3 +23,5 @@ set -gx EDITOR nvim
 fish_add_path /home/hemang/.spicetify
 
 fish_add_path /home/hemang/.local/bin
+
+set -gx LIBVA_DRIVER_NAME i965

@@ -77,12 +77,6 @@ window#waybar.empty #window {
 #custom-power{
   margin-right: 15px;
 }
-#custom-camera{
-  padding: 0px;
-}
-#custom-camera.active{
-  color: #800000;
-}
 
 /* 2. Style for your current 67% (The "Good" state) */
 /* This is likely what was turning green. We set it back to white/standard. */

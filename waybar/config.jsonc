@@ -9,7 +9,7 @@
   "margin-top": 2,
   "margin-right": 10,
   "modules-left": ["hyprland/workspaces","hyprland/window"],
-  "modules-center": ["battery","custom/camera","clock"],
+  "modules-center": ["battery","clock"],
   "modules-right": [
     "temperature",
     "memory",
@@ -62,17 +62,11 @@
     }
 },
 
-  "cpu": {
-    "interval": 5,
-    "format": "󰍛",
-    "on-click": "alacritty -T btop -e btop"
-  },
 
   "clock": {
     "format": "{:L%A %H:%M}",
     "format-alt": "{:L%d %B %Y}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "on-click-right": "code"
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -131,23 +125,6 @@
     "on-click": "~/.config/hypr/scripts/powermenu.sh",
   },
   
-  "network#speed": {
-	"interval": 1,
-	"format": "{ifname}",
-	"format-wifi": "{icon}   {bandwidthUpBytes}  {bandwidthDownBytes}",
-	"format-ethernet": "󰌘   {bandwidthUpBytes}  {bandwidthDownBytes}",
-	"format-disconnected": "󰌙",
-	"tooltip-format": "{ipaddr}",
-	"format-linked": "󰈁  {ifname} (No IP)",
-	"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-	"tooltip-format-ethernet": "{ifname} 󰌘",
-	"tooltip-format-disconnected": "󰌙 Disconnected",
-	"min-length": 24,
-	"max-length": 24,
-	"format-icons": [
-		"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
-	]
-},
 
 "idle_inhibitor": {
     "format": "{icon}",
@@ -172,14 +149,6 @@
     }
 },
 
-"custom/camera": {
-    "format": "{}",
-    "return-type": "json",
-
-    "interval": 2,
-    "on-click": "grim -g \"$(slurp)\" - | wl-copy",
-    "tooltip": false
-},
 "temperature": {
     "thermal-zone": 1, 
     "critical-threshold": 80,
