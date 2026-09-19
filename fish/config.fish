@@ -1,27 +1,10 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-
-    # Disable the default welcome greeting
-    set -g fish_greeting ""
-    neofetch
-    # Clear individual theme overrides to keep things clean
-    # (Optional: customize via 'fish_config theme' instead)
-end
-
-# Abbreviations (More powerful than aliases; expands inline as you type)
-abbr -a gco git checkout
-abbr -a gs git status
-abbr -a ll exa -l -g --icons # Requires 'exa' or 'eza' installed
-
-# Standard Aliases
-alias grep "grep --color=auto"
-alias c clear
-
-# Set default editor
+alias ll="ls -la --color=auto"
+alias pacup="sudo pacman -Syu"
+alias ..="cd .."
+fish_add_path /home/user/.local/bin
+fish_add_path /opt/cuda/bin
 set -gx EDITOR nvim
-
-fish_add_path /home/hemang/.spicetify
-
-fish_add_path /home/hemang/.local/bin
-
-set -gx LIBVA_DRIVER_NAME i965
+set -gx BROWSER firefox
+function fish_greeting
+    neofetch
+end

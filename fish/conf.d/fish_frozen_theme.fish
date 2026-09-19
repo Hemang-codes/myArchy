@@ -23,7 +23,7 @@ set --global fish_color_normal --reset
 set --global fish_color_operator 81a1c1
 set --global fish_color_option 8fbcbb
 set --global fish_color_param d8dee9
-set --global fish_color_quote 0087ff
+set --global fish_color_quote a3be8c
 set --global fish_color_redirection b48ead --bold
 set --global fish_color_search_match --bold --background=434c5e
 set --global fish_color_selection d8dee9 --bold --background=434c5e
